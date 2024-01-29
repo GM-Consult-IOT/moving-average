@@ -52,7 +52,7 @@ public:
     * Specifies a reading value.
     * @returns current output
     */
-    T filter(T input);
+    T operator()(T input);
 
 private:
 
@@ -92,7 +92,7 @@ void EMA_T<T>::reset() {
 };
 
 template <typename T>
-T EMA_T<T>::filter(T input) {
+T EMA_T<T>::operator()(T input) {
     if (hasInitial) {
         outputScaled = alpha * input + (alphaScale - alpha) * outputScaled / alphaScale;
     } else {

@@ -60,7 +60,7 @@ public:
 	 * Specifies a reading value.
 	 * @returns current output
 	 */
-	double filter(double input);
+	double operator()(double input);
 
 private:
 
@@ -83,7 +83,7 @@ void EMA::reset() {
 	this->hasInitial = false;
 }
 
-double EMA::filter(double input) {
+double EMA::operator()(double input) {
 	if (hasInitial) {
 		output = alpha * (input - output) + output;
 	} else {
