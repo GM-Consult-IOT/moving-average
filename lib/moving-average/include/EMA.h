@@ -9,7 +9,8 @@
 * 
 * @section author Author
 * 
-* Gerhard Malan for GM Consult Pty Ltd
+* Gerhard Malan for GM Consult Pty Ltd, based on original work by 
+* (jonnieZG)[https://github.com/jonnieZG/EWMA].
 * 
  * @section license License
  * 
