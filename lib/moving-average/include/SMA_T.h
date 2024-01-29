@@ -1,8 +1,8 @@
 /*!
 * @file EMA.h
 *
-* @mainpage Simple Moving Average (SMA) filter used for smoothing time-series 
-* data.
+* @mainpage Simple Moving Average (SMA) filter used for smoothing 
+* unsigned integer time-series data.
 *
 * @section intro_sec_Introduction
 *
@@ -32,13 +32,13 @@
  *
  */
 
-#ifndef _SMA_H_
-#define _SMA_H_
+#ifndef _SMA_T_H_
+#define _SMA_T_H_
 
 #include <stdint.h>
 
 template <uint8_t N, class input_t = uint16_t, class sum_t = uint32_t>
-class SMA {
+class SMA_T {
   public:
     input_t operator()(input_t input) {
         sum -= previousInputs[index];
@@ -46,9 +46,13 @@ class SMA {
         previousInputs[index] = input;
         if (++index == N)
             index = 0;
-        return (input_t)(round((sum + (N / 2)) / N));
+        return (sum + (N / 2)) / N;
     }
 
+    static_assert(
+        sum_t(0) < sum_t(-1),  // Check that `sum_t` is an unsigned type
+        "Error: sum data type should be an unsigned integer, otherwise, "
+        "the rounding operation in the return statement is invalid.");
 
   private:
     uint8_t index             = 0;
@@ -56,4 +60,4 @@ class SMA {
     sum_t sum                 = 0;
 };
 
-#endif // _SMA_H_
+#endif // _SMA_T_H_
