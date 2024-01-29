@@ -1,0 +1,25 @@
+{
+    "name": "moving-average",
+    "version": "0.0.1",
+    "description": "Light-weight filters for smoothing time series data such as ADC readings.",
+    "keywords": "exponential, simple, moving, average, smoothing, filter, time series",
+    "repository":
+        {
+            "type": "git",
+            "url": "https://github.com/GM-Consult-IOT/moving-average.git"
+        },
+    "authors":
+        [
+            {
+                "name": "Gerhard Malan",
+                "email": "gmalan@gmconsult.com.au",
+                "url": "https://github.com/GerhardMalan"
+            }
+        ],
+    "license": "BSD-3-Clause",
+    "homepage": "https://github.com/GM-Consult-IOT/moving-average",
+    "dependencies": [],
+    "frameworks": "arduino",
+    "platforms": "*"
+   
+  }
