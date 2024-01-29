@@ -1,6 +1,6 @@
 {
     "name": "moving-average",
-    "version": "0.0.1+2",
+    "version": "0.0.1+3",
     "description": "Light-weight filters for smoothing time series data such as ADC readings.",
     "keywords": "exponential, simple, moving, average, smoothing, filter, time series",
     "repository":
