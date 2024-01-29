@@ -37,31 +37,32 @@
 
 #include <stdint.h>
 
-template <uint8_t N, class input_t = uint16_t, class sum_t = uint32_t>
+template <uint8_t N, typename T>
 class SMA {
   public:
-    input_t operator()(input_t input) {
+    T operator()(T input) {
         sum -= previousInputs[index];
         sum += input;
         previousInputs[index] = input;
         if (++index == N)
             index = 0;
-        input_t output = round((sum + (N / 2)) / N);
-        Serial.printf("Input: %f, sum: %f, index: %i\n", 
-                      input, sum, index);
-        Serial.print("Time series = {");
-        for (int i = 0; i<N; i++){
-          Serial.printf("%f", previousInputs[i]);
-        }
-        Serial.println("}");
-        return output;
+        #ifdef SMA_DEBUG
+          Serial.printf("Input: %f, sum: %f, index: %i\n", 
+                        input, sum, index);
+          Serial.print("Time series = {");
+          for (int i = 0; i<N; i++){
+            Serial.printf("%f", previousInputs[i]);
+          }
+          Serial.println("}");
+        #endif //SMA_DEBUG
+        return round((sum + (N / 2)) / N);
     }
 
 
   private:
-    uint8_t index             = 0;
-    input_t previousInputs[N] = {};
-    sum_t sum                 = 0;
+    uint16_t index             = 0;
+    T previousInputs[N] = {};
+    T sum                 = 0;
 };
 
 #endif // _SMA_H_
