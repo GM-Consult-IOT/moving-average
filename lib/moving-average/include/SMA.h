@@ -46,7 +46,15 @@ class SMA {
         previousInputs[index] = input;
         if (++index == N)
             index = 0;
-        return (input_t)(round((sum + (N / 2)) / N));
+        input_t output = round((sum + (N / 2)) / N);
+        Serial.printf("Input: %f, sum: %f, index: %i\n", 
+                      input, sum, index);
+        Serial.print("Time series = {");
+        for (int i = 0; i<N; i++){
+          Serial.printf("%f", previousInputs[i]);
+        }
+        Serial.println("}");
+        return output;
     }
 
 
