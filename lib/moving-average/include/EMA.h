@@ -30,8 +30,8 @@
  *
  */
 
-#ifndef EMA_H_
-#define EMA_H_
+#ifndef _EMA_H_
+#define _EMA_H_
 
 class EMA {
 public:
@@ -94,4 +94,4 @@ double EMA::operator()(double input) {
 }
 
 
-#endif /* EMA_H_ */
+#endif /* _EMA_H_ */
