@@ -47,51 +47,40 @@ public:
 	/*
 	 * Creates a filter without a defined initial output. The first output will be equal to the first input.
 	 */
-	EMA(double alpha);
+	EMA(double alpha){
+		this->alpha = alpha;
+	}
 
 	/*
 	 * Creates a filter with a defined initial output.
 	 */
-	EMA(double alpha, double initialOutput);
-
-	void reset();
+	EMA(double alpha, double initialOutput){
+		this->alpha = alpha;
+		this->output = initialOutput;
+		this->hasInitial = true;
+	}
+	void reset(){
+		this->hasInitial = false;
+	}
 
 	/*
 	 * Specifies a reading value.
 	 * @returns current output
 	 */
-	double operator()(double input);
+	double operator()(double input){
+		if (hasInitial) {
+			output = alpha * (input - output) + output;
+		} else {
+			output = input;
+			hasInitial = true;
+		}
+		return output;
+	}
 
 private:
 
 	bool hasInitial = false;
 
 };
-
-
-EMA::EMA(double alpha) {
-	this->alpha = alpha;
-}
-
-EMA::EMA(double alpha, double initialOutput) {
-	this->alpha = alpha;
-	this->output = initialOutput;
-	this->hasInitial = true;
-}
-
-void EMA::reset() {
-	this->hasInitial = false;
-}
-
-double EMA::operator()(double input) {
-	if (hasInitial) {
-		output = alpha * (input - output) + output;
-	} else {
-		output = input;
-		hasInitial = true;
-	}
-	return output;
-}
-
 
 #endif /* _EMA_H_ */
