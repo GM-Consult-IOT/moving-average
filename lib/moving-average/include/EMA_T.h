@@ -72,6 +72,8 @@ public:
         return output();
     };
 
+    T alpha;
+    
 private:
 
     void init(T alpha, unsigned int alphaScale, T initialOutput){
@@ -84,7 +86,6 @@ private:
     /*
      * Smoothing factor, in range [0,alphaScale]. Higher the value - less smoothing (higher the latest reading impact).
      */
-    T alpha;
     T outputScaled;
     unsigned int alphaScale;
     bool hasInitial;

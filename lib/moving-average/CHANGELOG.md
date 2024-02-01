@@ -1,5 +1,8 @@
 <!-- moving-average -->
 
+## 0.0.4
+* Changed scope of `alpha` to public
+
 ## 0.0.3
 * Tidied up definitions and header files.
 
